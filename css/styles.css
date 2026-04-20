@@ -994,7 +994,7 @@ em {
   .hero {
     height: auto;
     width: 100%;
-    padding: 24px 20px 80px;
+    padding: 24px 20px 40px;
     overflow: visible;
   }
 
@@ -1172,7 +1172,7 @@ em {
   .bloggers {
     width: 100%;
     max-width: 100%;
-    padding: 80px 20px 0;
+    padding: 40px 20px 0;
     margin: 0;
     gap: 32px;
   }
@@ -1253,11 +1253,12 @@ em {
   .omnipresence__card {
     width: 100%;
     height: auto;
-    padding: 24px;
+    padding: 24px 24px 0;
     box-sizing: border-box;
     position: relative;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
   }
 
   .omnipresence__text {
@@ -1286,7 +1287,8 @@ em {
     max-width: 100%;
     order: 3;
     margin-top: 24px;
-    border-radius: 16px;
+    margin-bottom: 0;
+    border-radius: 16px 16px 0 0;
     aspect-ratio: 287 / 152;
     object-fit: cover;
   }
@@ -1388,19 +1390,17 @@ em {
     height: 15px;
   }
 
-  /* Add dotted-line after each turnkey item */
+  /* Add dotted-line after each turnkey item — dot touches line */
   .turnkey__item::after {
     content: "";
-    display: flex;
-    align-items: center;
+    display: block;
     height: 10px;
     width: 100%;
-    padding-left: 12px;
     box-sizing: border-box;
     background:
       radial-gradient(circle 5px at 5px 5px, var(--green) 100%, transparent 101%) no-repeat,
       linear-gradient(to right, #71b219 0%, #00a875 50%, rgba(44, 100, 235, 0) 100%) no-repeat;
-    background-position: 0 0, 22px 4px;
+    background-position: 12px 0, 22px 4px;
     background-size: 10px 10px, calc(100% - 22px) 1px;
   }
 
