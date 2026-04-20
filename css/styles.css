@@ -9,7 +9,11 @@
   --white: #ffffff;
   --black: #000000;
   --text-muted: rgba(0, 0, 0, 0.8);
-  --gradient: linear-gradient(90deg, #2c64eb 0%, #00a875 50%, #71b219 100%);
+  /* Main brand gradient — matches Figma/SwiftUI spec exactly.
+     Axis from x=-26% to x=137% so the element's visible area shows
+     only mixed intermediate tones (no pure solid at edges). */
+  --gradient: linear-gradient(90deg, #2c64eb -26%, #00a875 55.44%, #71b219 137%);
+  --gradient-h: var(--gradient);
   --gradient-soft: linear-gradient(
     90deg,
     rgba(44, 100, 235, 0.06) 0%,
@@ -922,7 +926,7 @@ em {
   font-weight: 600;
   font-size: 20px;
   line-height: 1.25;
-  background: var(--gradient);
+  background: var(--gradient-h);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
