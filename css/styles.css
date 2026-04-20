@@ -952,11 +952,42 @@ em {
    All numbers map 1:1 to the Figma mobile frame (20112:4511).
    ========================================================= */
 @media (max-width: 767px) {
-  /* Hide huge decorative blobs — not in mobile design */
-  .bg-blobs { display: none; }
-
   .page {
     overflow-x: hidden;
+  }
+
+  /* Decorative bg curves — re-positioned for mobile per Figma mobile frame.
+     4 rotated shapes that peek in from the page edges. */
+  .bg-blob--top {
+    top: 420px;
+    left: 100px;
+    width: 700px;
+    height: 500px;
+    transform: rotate(-168.94deg) scaleY(-1);
+  }
+
+  .bg-blob--left {
+    top: 1120px;
+    left: -500px;
+    width: 700px;
+    height: 460px;
+    transform: rotate(-11.06deg);
+  }
+
+  .bg-blob--mid {
+    top: 2200px;
+    left: 100px;
+    width: 700px;
+    height: 460px;
+    transform: rotate(-168.94deg) scaleY(-1);
+  }
+
+  .bg-blob--bottom {
+    top: 3720px;
+    left: 100px;
+    width: 700px;
+    height: 460px;
+    transform: rotate(-168.94deg) scaleY(-1);
   }
 
   /* ===== HERO ===== */
@@ -967,8 +998,10 @@ em {
     overflow: visible;
   }
 
+  /* Gradient ends mid-way through 2nd stat card (per Figma mobile) */
   .hero__bg {
-    inset: 0;
+    inset: 0 0 auto 0;
+    height: 750px;
     border-radius: 0 0 24px 24px;
     background: var(--card-gradient);
     z-index: 0;
@@ -1164,11 +1197,15 @@ em {
     flex-wrap: wrap;
     gap: 20px 0;
     width: 100%;
+    background: var(--card-gradient-vert);
+    border-top: 4px solid var(--blue);
+    border-radius: 32px;
+    padding: 24px 0 16px;
+    box-sizing: border-box;
   }
 
-  /* On mobile we reshape semantics: each existing .blogger-column
-     (which has 2 items) is displayed as 2 grid rows × 1 column.
-     We use the full grid via container queries. Simpler: break items out. */
+  /* On mobile: each existing .blogger-column (which has 2 items) is
+     dissolved via display:contents so items form a 2×5 grid. */
   .blogger-column {
     display: contents;
   }
@@ -1178,7 +1215,7 @@ em {
     max-width: 50%;
     background: none;
     border: none;
-    padding: 24px 0 0;
+    padding: 0;
     gap: 12px;
   }
 
@@ -1216,10 +1253,11 @@ em {
   .omnipresence__card {
     width: 100%;
     height: auto;
-    min-height: 720px;
     padding: 24px;
     box-sizing: border-box;
     position: relative;
+    display: flex;
+    flex-direction: column;
   }
 
   .omnipresence__text {
@@ -1227,6 +1265,7 @@ em {
     width: 100%;
     padding: 0;
     gap: 10px;
+    order: 1;
   }
 
   .omnipresence__label {
@@ -1237,6 +1276,7 @@ em {
   .omnipresence__title {
     font-size: 32px;
     line-height: 1.25;
+    letter-spacing: -0.5px;
   }
 
   .omnipresence__visual {
@@ -1244,9 +1284,11 @@ em {
     width: 100%;
     height: auto;
     max-width: 100%;
-    order: 99;
+    order: 3;
     margin-top: 24px;
     border-radius: 16px;
+    aspect-ratio: 287 / 152;
+    object-fit: cover;
   }
 
   .omnipresence__list {
@@ -1255,6 +1297,7 @@ em {
     height: auto;
     gap: 16px;
     margin-top: 24px;
+    order: 2;
   }
 
   .omnipresence__item {
