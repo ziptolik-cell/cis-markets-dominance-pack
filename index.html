@@ -8,21 +8,26 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,700;1,700&family=Roboto:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
+  <!-- Preload above-the-fold assets -->
+  <link rel="preload" as="image" href="assets/bg/world-map.webp" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/bg/decorative.webp" fetchpriority="low">
 </head>
 <body>
   <div class="page">
-    <!-- Background decorative blobs -->
-    <div class="bg-blob bg-blob--top"></div>
-    <div class="bg-blob bg-blob--left"></div>
-    <div class="bg-blob bg-blob--mid"></div>
-    <div class="bg-blob bg-blob--bottom"></div>
+    <!-- Background decorative blobs (wrapped for page-edge fade) -->
+    <div class="bg-blobs" aria-hidden="true">
+      <div class="bg-blob bg-blob--top"></div>
+      <div class="bg-blob bg-blob--left"></div>
+      <div class="bg-blob bg-blob--mid"></div>
+      <div class="bg-blob bg-blob--bottom"></div>
+    </div>
 
     <!-- HERO -->
     <section class="hero">
       <div class="hero__bg">
-        <img src="assets/bg/world-map.png" class="hero__world-map" alt="">
+        <img src="assets/bg/world-map.webp" class="hero__world-map" alt="" width="841" height="579" decoding="async" fetchpriority="high">
       </div>
-      <img src="assets/icons/logo-traders-union.svg" class="hero__logo" alt="Traders Union">
+      <img src="assets/icons/logo-traders-union.svg" class="hero__logo" alt="Traders Union" width="120" height="40">
 
       <div class="hero__content">
         <div class="hero__headline">
@@ -33,12 +38,12 @@
         <div class="hero__geo">
           <p class="hero__geo-label">География:</p>
           <div class="country-tags">
-            <span class="country-tag"><img src="assets/flags/ukraine.svg" alt="">Украина</span>
-            <span class="country-tag"><img src="assets/flags/kazakhstan.svg" alt="">Казахстан</span>
-            <span class="country-tag"><img src="assets/flags/uae.svg" alt="">ОАЭ</span>
-            <span class="country-tag"><img src="assets/flags/turkey.svg" alt="">Турция</span>
-            <span class="country-tag"><img src="assets/flags/poland.svg" alt="">Польша</span>
-            <span class="country-tag"><img src="assets/flags/germany.svg" alt="">Германия</span>
+            <span class="country-tag"><img src="assets/flags/ukraine.svg" alt="" width="32" height="32" decoding="async">Украина</span>
+            <span class="country-tag"><img src="assets/flags/kazakhstan.svg" alt="" width="32" height="32" decoding="async">Казахстан</span>
+            <span class="country-tag"><img src="assets/flags/uae.svg" alt="" width="32" height="32" decoding="async">ОАЭ</span>
+            <span class="country-tag"><img src="assets/flags/turkey.svg" alt="" width="32" height="32" decoding="async">Турция</span>
+            <span class="country-tag"><img src="assets/flags/poland.svg" alt="" width="32" height="32" decoding="async">Польша</span>
+            <span class="country-tag"><img src="assets/flags/germany.svg" alt="" width="32" height="32" decoding="async">Германия</span>
           </div>
           <p class="hero__geo-note">А также другие страны, в которые переехали русскоговорящие пользователи из России и Украины.</p>
         </div>
@@ -107,12 +112,12 @@
       <div class="blogger-columns">
         <div class="blogger-column">
           <div class="blogger-item">
-            <img src="assets/bloggers/coinpost.png" alt="" class="blogger-item__avatar">
+            <img src="assets/bloggers/coinpost.webp" alt="" class="blogger-item__avatar" width="100" height="100" loading="lazy" decoding="async">
             <h3 class="blogger-item__name">CoinPost</h3>
             <p class="blogger-item__desc">Крупнейшее крипто-медиа СНГ</p>
           </div>
           <div class="blogger-item">
-            <img src="assets/bloggers/fibotraders.png" alt="" class="blogger-item__avatar">
+            <img src="assets/bloggers/fibotraders.webp" alt="" class="blogger-item__avatar" width="100" height="100" loading="lazy" decoding="async">
             <h3 class="blogger-item__name">Fibotraders</h3>
             <p class="blogger-item__desc">Сильная трейдерская аудитория</p>
           </div>
@@ -120,12 +125,12 @@
 
         <div class="blogger-column">
           <div class="blogger-item">
-            <img src="assets/bloggers/problockchain.png" alt="" class="blogger-item__avatar">
+            <img src="assets/bloggers/problockchain.webp" alt="" class="blogger-item__avatar" width="100" height="100" loading="lazy" decoding="async">
             <h3 class="blogger-item__name">ProBlockchain</h3>
             <p class="blogger-item__desc">Стабильный новостной поток</p>
           </div>
           <div class="blogger-item">
-            <img src="assets/bloggers/cryptoshark.png" alt="" class="blogger-item__avatar">
+            <img src="assets/bloggers/cryptoshark.webp" alt="" class="blogger-item__avatar" width="100" height="100" loading="lazy" decoding="async">
             <h3 class="blogger-item__name">CryptoShark</h3>
             <p class="blogger-item__desc">Массовая крипто аудитория</p>
           </div>
@@ -133,12 +138,12 @@
 
         <div class="blogger-column">
           <div class="blogger-item">
-            <img src="assets/bloggers/cryptolady.png" alt="" class="blogger-item__avatar">
+            <img src="assets/bloggers/cryptolady.webp" alt="" class="blogger-item__avatar" width="100" height="100" loading="lazy" decoding="async">
             <h3 class="blogger-item__name">CRYPTO LADY</h3>
             <p class="blogger-item__desc">вовлеченность + мультигео</p>
           </div>
           <div class="blogger-item">
-            <img src="assets/bloggers/avseenko.png" alt="" class="blogger-item__avatar">
+            <img src="assets/bloggers/avseenko.webp" alt="" class="blogger-item__avatar" width="100" height="100" loading="lazy" decoding="async">
             <h3 class="blogger-item__name">Avseenko Life</h3>
             <p class="blogger-item__desc">инвестиционный подход и доверие</p>
           </div>
@@ -146,12 +151,12 @@
 
         <div class="blogger-column">
           <div class="blogger-item">
-            <img src="assets/bloggers/cryptoview.png" alt="" class="blogger-item__avatar">
+            <img src="assets/bloggers/cryptoview.webp" alt="" class="blogger-item__avatar" width="100" height="100" loading="lazy" decoding="async">
             <h3 class="blogger-item__name">CryptoView</h3>
             <p class="blogger-item__desc">образовательный контент</p>
           </div>
           <div class="blogger-item">
-            <img src="assets/bloggers/cryptovision.png" alt="" class="blogger-item__avatar">
+            <img src="assets/bloggers/cryptovision.webp" alt="" class="blogger-item__avatar" width="100" height="100" loading="lazy" decoding="async">
             <h3 class="blogger-item__name">CryptoVision</h3>
             <p class="blogger-item__desc">инвестиционная аналитика</p>
           </div>
@@ -159,12 +164,12 @@
 
         <div class="blogger-column">
           <div class="blogger-item">
-            <img src="assets/bloggers/kara.png" alt="" class="blogger-item__avatar">
+            <img src="assets/bloggers/kara.webp" alt="" class="blogger-item__avatar" width="100" height="100" loading="lazy" decoding="async">
             <h3 class="blogger-item__name">Kara Trading</h3>
             <p class="blogger-item__desc">экспертный анализ + системный подход</p>
           </div>
           <div class="blogger-item">
-            <img src="assets/bloggers/enjoymaloy.png" alt="" class="blogger-item__avatar">
+            <img src="assets/bloggers/enjoymaloy.webp" alt="" class="blogger-item__avatar" width="100" height="100" loading="lazy" decoding="async">
             <h3 class="blogger-item__name">EnjoyMaloy</h3>
             <p class="blogger-item__desc">вход в крипту, onboarding аудитории</p>
           </div>
@@ -180,7 +185,7 @@
           <h2 class="omnipresence__title">Omnipresence "<em>Вас видят везде</em>"</h2>
         </div>
 
-        <img src="assets/bg/omnipresence.png" alt="" class="omnipresence__visual">
+        <img src="assets/bg/omnipresence.webp" alt="" class="omnipresence__visual" width="770" height="408" loading="lazy" decoding="async">
 
         <ul class="omnipresence__list">
           <li class="omnipresence__item">
@@ -271,7 +276,7 @@
           </div>
 
           <div class="info-block">
-            <img src="assets/icons/info.svg" alt="" class="info-block__icon">
+            <img src="assets/icons/info.svg" alt="" class="info-block__icon" width="24" height="24" loading="lazy">
             <p class="info-block__text">Даже с учетом нашей комиссии, Вы платите меньше примерно на 15%, чем если бы обратились к блогерам напрямую и сделали бы всю нашу работу.</p>
             <p class="info-block__text">С нами Вы экономите деньги и ресурсы команды.</p>
           </div>
@@ -291,14 +296,14 @@
           <h3 class="contact-card__title"><em>Напишите нам</em> — и мы адаптируем этот пакет под ваш продукт и GEO</h3>
           <div class="contact-card__links">
             <div class="contact-row">
-              <img src="assets/icons/telegram.svg" alt="" class="contact-row__icon">
+              <img src="assets/icons/telegram.svg" alt="" class="contact-row__icon" width="32" height="32" loading="lazy">
               <span class="contact-row__label">Telegram:</span>
-              <a href="https://t.me/TU_Business" target="_blank" class="contact-row__link">TU_Business<img src="assets/icons/arrow.svg" alt="" class="contact-row__arrow"></a>
+              <a href="https://t.me/TU_Business" target="_blank" class="contact-row__link">TU_Business<img src="assets/icons/arrow.svg" alt="" class="contact-row__arrow" width="12" height="12" loading="lazy"></a>
             </div>
             <div class="contact-row">
-              <img src="assets/icons/whatsapp.svg" alt="" class="contact-row__icon">
+              <img src="assets/icons/whatsapp.svg" alt="" class="contact-row__icon" width="32" height="32" loading="lazy">
               <span class="contact-row__label">WhatsApp:</span>
-              <a href="https://wa.me/48699583262" target="_blank" class="contact-row__link">48699583262<img src="assets/icons/arrow.svg" alt="" class="contact-row__arrow"></a>
+              <a href="https://wa.me/48699583262" target="_blank" class="contact-row__link">48699583262<img src="assets/icons/arrow.svg" alt="" class="contact-row__arrow" width="12" height="12" loading="lazy"></a>
             </div>
           </div>
         </div>
