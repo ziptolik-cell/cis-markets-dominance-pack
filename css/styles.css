@@ -939,7 +939,7 @@ em {
 }
 
 /* =========================================================
-   RESPONSIVE — mobile
+   RESPONSIVE — tablet fallback (1279..768)
    ========================================================= */
 @media (max-width: 1279px) {
   .page {
@@ -947,73 +947,100 @@ em {
   }
 }
 
-@media (max-width: 960px) {
-  /* Hide huge decorative blobs on mobile */
-  .bg-blob { display: none; }
+/* =========================================================
+   MOBILE — 375px Figma mobile layout
+   All numbers map 1:1 to the Figma mobile frame (20112:4511).
+   ========================================================= */
+@media (max-width: 767px) {
+  /* Hide huge decorative blobs — not in mobile design */
+  .bg-blobs { display: none; }
 
-  /* HERO reflow */
+  .page {
+    overflow-x: hidden;
+  }
+
+  /* ===== HERO ===== */
   .hero {
     height: auto;
-    padding: 80px 20px 32px;
+    width: 100%;
+    padding: 24px 20px 80px;
+    overflow: visible;
+  }
+
+  .hero__bg {
+    inset: 0;
     border-radius: 0 0 24px 24px;
+    background: var(--card-gradient);
+    z-index: 0;
   }
 
   .hero__world-map {
-    top: 180px;
-    width: 100%;
-    max-width: 100%;
-    height: auto;
-    object-fit: contain;
-    opacity: 0.35;
+    display: none;
   }
 
   .hero__logo {
-    width: 96px;
-    height: 32px;
-    top: 24px;
+    position: relative;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 40px;
+    z-index: 2;
   }
 
+  /* Hero content */
   .hero__content {
-    position: static;
+    position: relative;
+    z-index: 2;
     flex-direction: column;
-    gap: 32px;
-    transform: none;
+    gap: 24px;
+    padding: 0;
+    margin-top: 40px;
+    align-items: stretch;
+    inset: auto;
   }
 
   .hero__headline {
     width: 100%;
+    gap: 12px;
   }
 
   .hero__title {
     font-size: 40px;
-    line-height: 1.15;
+    line-height: 1.25;
+    letter-spacing: -0.5px;
   }
 
   .hero__subtitle {
-    font-size: 18px;
+    font-size: 16px;
+    line-height: 1.25;
   }
 
   .hero__geo {
     width: 100%;
-    gap: 16px;
+    gap: 12px;
     align-items: flex-start;
+    margin-top: 12px; /* total ~24 gap from headline block */
   }
 
   .hero__geo-label,
   .hero__geo-note {
     text-align: left;
     font-size: 16px;
+    line-height: 1.25;
   }
 
   .country-tags {
     justify-content: flex-start;
-    gap: 10px;
+    gap: 8px;
   }
 
   .country-tag {
-    font-size: 16px;
-    padding: 4px 14px 4px 4px;
-    gap: 8px;
+    font-size: 18px;
+    line-height: 1.5;
+    font-weight: 600;
+    padding: 6px 16px 6px 6px;
+    gap: 10px;
   }
 
   .country-tag img {
@@ -1021,94 +1048,195 @@ em {
     height: 24px;
   }
 
+  /* Stats */
   .hero__stats-label {
-    position: static;
+    position: relative;
+    z-index: 2;
     transform: none;
     display: block;
-    margin: 40px 0 20px;
-    text-align: center;
+    margin: 40px 0 16px;
+    text-align: left;
     font-size: 16px;
+    line-height: 1.25;
+    white-space: normal;
+    left: auto;
+    top: auto;
   }
 
   .stats-cards {
-    position: static;
+    position: relative;
+    z-index: 2;
     width: 100%;
     flex-direction: column;
-    gap: 16px;
+    gap: 12px;
+    padding: 0;
+    left: auto;
+    top: auto;
   }
 
   .stats-cards .stat-card {
     width: 100% !important;
+    flex-direction: row !important;
+    align-items: center;
+    gap: 20px;
+    padding: 16px 12px;
+    text-align: left;
+    min-height: 98px;
+    box-sizing: border-box;
   }
 
   .stat-card__text {
     font-size: 16px;
+    line-height: 1.4;
+    text-align: left;
+    flex: 1;
   }
 
-  /* BLOGGERS */
+  /* Mobile halo badge: outer 66 → middle 50 → core 34 → icon 18 */
+  .stats-cards .halo-badge {
+    padding: 8px;
+    flex-shrink: 0;
+  }
+
+  .stats-cards .halo-badge__ring2 {
+    padding: 8px;
+  }
+
+  .stats-cards .halo-badge__core {
+    padding: 8px;
+    width: 18px;
+    height: 18px;
+  }
+
+  .stats-cards .halo-badge__icon {
+    width: 18px;
+    height: 18px;
+  }
+
+  .stats-cards .halo-badge__icon--eye {
+    width: 18px;
+    height: 11px;
+  }
+
+  .stats-cards .halo-badge__icon--calendar {
+    width: 16px;
+    height: 16px;
+  }
+
+  .stats-cards .icon-group {
+    width: 18px;
+    height: 18px;
+  }
+
+  .stats-cards .icon-group__p1 { width: calc(18px * 0.1876); height: calc(18px * 0.3303); }
+  .stats-cards .icon-group__p2 { width: calc(18px * 0.1876); height: calc(18px * 0.3303); }
+  .stats-cards .icon-group__p3 { width: calc(18px * 0.3939); height: calc(18px * 0.3939); }
+  .stats-cards .icon-group__p4 { width: calc(18px * 0.2938); height: calc(18px * 0.2938); }
+  .stats-cards .icon-group__p5 { width: calc(18px * 0.2198); height: calc(18px * 0.2198); }
+  .stats-cards .icon-group__p6 { width: calc(18px * 0.2198); height: calc(18px * 0.2198); }
+
+  /* ===== BLOGGERS ===== */
   .bloggers {
     width: 100%;
-    padding: 64px 20px 0;
-    margin: 0 auto;
+    max-width: 100%;
+    padding: 80px 20px 0;
+    margin: 0;
     gap: 32px;
   }
 
   .bloggers__heading {
     width: 100%;
+    gap: 24px;
   }
 
   .section-title {
-    font-size: 28px;
+    font-size: 32px;
     width: 100%;
+    line-height: 1.25;
   }
 
   .bloggers__subtitle {
     font-size: 16px;
+    line-height: 1.25;
   }
 
   .blogger-columns {
     flex-wrap: wrap;
+    gap: 20px 0;
+    width: 100%;
+  }
+
+  /* On mobile we reshape semantics: each existing .blogger-column
+     (which has 2 items) is displayed as 2 grid rows × 1 column.
+     We use the full grid via container queries. Simpler: break items out. */
+  .blogger-column {
+    display: contents;
+  }
+
+  .blogger-item {
+    flex: 0 0 50%;
+    max-width: 50%;
+    background: none;
+    border: none;
+    padding: 24px 0 0;
     gap: 12px;
   }
 
-  .blogger-column {
-    flex: 1 1 calc(50% - 6px);
-    min-width: calc(50% - 6px);
-    height: auto;
-    padding: 24px 0;
-    gap: 24px;
-  }
-
   .blogger-item__avatar {
-    width: 72px;
-    height: 72px;
+    width: 80px;
+    height: 80px;
   }
 
-  .blogger-item__name { font-size: 16px; }
-  .blogger-item__desc { font-size: 13px; }
+  /* First pair (CoinPost/Fibotraders) use 64px avatars per Figma */
+  .blogger-columns > .blogger-column:first-child .blogger-item__avatar {
+    width: 64px;
+    height: 64px;
+  }
 
-  /* OMNIPRESENCE */
+  .blogger-item__name {
+    font-size: 18px;
+    line-height: 1.25;
+    font-weight: 700;
+  }
+
+  .blogger-item__desc {
+    font-size: 14px;
+    line-height: 1.28;
+    padding: 0 10px;
+  }
+
+  /* ===== OMNIPRESENCE ===== */
   .omnipresence {
     width: 100%;
-    margin: 64px auto 0;
+    max-width: 100%;
+    margin: 80px auto 0;
     padding: 0 20px;
   }
 
   .omnipresence__card {
     width: 100%;
     height: auto;
+    min-height: 720px;
     padding: 24px;
+    box-sizing: border-box;
+    position: relative;
   }
 
   .omnipresence__text {
     position: static;
     width: 100%;
     padding: 0;
-    margin-bottom: 24px;
+    gap: 10px;
+  }
+
+  .omnipresence__label {
+    font-size: 16px;
+    line-height: 1.25;
   }
 
   .omnipresence__title {
     font-size: 32px;
+    line-height: 1.25;
   }
 
   .omnipresence__visual {
@@ -1116,7 +1244,9 @@ em {
     width: 100%;
     height: auto;
     max-width: 100%;
-    margin: 16px 0;
+    order: 99;
+    margin-top: 24px;
+    border-radius: 16px;
   }
 
   .omnipresence__list {
@@ -1124,27 +1254,59 @@ em {
     width: 100%;
     height: auto;
     gap: 16px;
+    margin-top: 24px;
+  }
+
+  .omnipresence__item {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .omnipresence__item .check-badge {
+    width: 27px;
+    height: 27px;
+    padding: 6px;
+    border-radius: 27px 27px 27px 0;
+    align-self: center;
+  }
+
+  .omnipresence__item .check-badge img {
+    width: 15px;
+    height: 15px;
   }
 
   .omnipresence__text-item {
     font-size: 16px;
+    line-height: 1.4;
+    flex: 1;
+    min-width: 0;
   }
 
-  /* TURNKEY */
+  .omnipresence__item .dotted-line {
+    width: 100%;
+    margin-top: 4px;
+  }
+
+  /* ===== TURNKEY ===== */
   .turnkey {
     width: 100%;
+    max-width: 100%;
     padding: 0 20px;
-    margin: 64px auto 0;
-    gap: 40px;
+    margin: 80px auto 0;
+    gap: 32px;
   }
 
   .turnkey__title {
-    font-size: 28px;
+    font-size: 32px;
+    line-height: 1.22;
   }
 
   .turnkey__items {
     flex-direction: column;
-    gap: 20px;
+    gap: 16px;
+    align-items: stretch;
   }
 
   .turnkey__item,
@@ -1152,72 +1314,166 @@ em {
   .turnkey__item--w167 {
     width: 100%;
     flex: 1 1 100%;
+    flex-direction: column;
+    gap: 14px;
   }
 
   .vertical-line { display: none; }
 
-  /* PRICING */
+  .turnkey__body {
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .turnkey__body p {
+    font-size: 16px;
+    line-height: 1.4;
+    flex: 1;
+  }
+
+  .turnkey__body .check-badge {
+    width: 27px;
+    height: 27px;
+    padding: 6px;
+    border-radius: 27px 27px 27px 0;
+    flex-shrink: 0;
+  }
+
+  .turnkey__body .check-badge img {
+    width: 15px;
+    height: 15px;
+  }
+
+  /* Add dotted-line after each turnkey item */
+  .turnkey__item::after {
+    content: "";
+    display: flex;
+    align-items: center;
+    height: 10px;
+    width: 100%;
+    padding-left: 12px;
+    box-sizing: border-box;
+    background:
+      radial-gradient(circle 5px at 5px 5px, var(--green) 100%, transparent 101%) no-repeat,
+      linear-gradient(to right, #71b219 0%, #00a875 50%, rgba(44, 100, 235, 0) 100%) no-repeat;
+    background-position: 0 0, 22px 4px;
+    background-size: 10px 10px, calc(100% - 22px) 1px;
+  }
+
+  /* ===== PRICING ===== */
   .pricing-section {
     width: 100%;
+    max-width: 100%;
     padding: 0 20px;
-    margin: 64px auto 64px;
+    margin: 80px auto 80px;
   }
 
   .pricing-section__title {
-    font-size: 28px;
+    font-size: 32px;
+    line-height: 1.22;
+    text-align: left;
     width: 100%;
-    margin-bottom: 32px;
+    margin: 0 0 35px;
   }
 
   .pricing-section__grid {
     flex-direction: column;
-    gap: 32px;
+    gap: 35px;
   }
 
   .pricing-section__left {
     width: 100%;
-    gap: 24px;
+    gap: 35px;
   }
 
-  .pricing-card__text { font-size: 16px; }
+  .pricing-cards {
+    gap: 16px;
+  }
+
+  .pricing-card {
+    padding: 16px;
+    border-radius: 24px;
+    gap: 12px;
+  }
+
+  .pricing-card__text {
+    font-size: 16px;
+    line-height: 1.2;
+  }
+
+  .pricing-card .gradient-badge--sm {
+    width: 40px;
+    height: 40px;
+  }
 
   .info-block {
     width: 100%;
+    gap: 16px;
   }
 
-  .info-block__text { font-size: 15px; }
+  .info-block__text {
+    font-size: 16px;
+    line-height: 1.4;
+  }
 
   .contact-card {
     width: 100%;
-    padding: 24px 20px;
+    padding: 28px 24px 32px;
+    align-items: flex-start;
+    gap: 24px;
   }
 
-  .contact-card__icon {
-    width: 80px;
-    height: 80px;
+  /* Large halo badge on mobile contact card stays 104px */
+  .contact-card .halo-badge--lg {
+    padding: 12px;
+  }
+
+  .contact-card .halo-badge--lg .halo-badge__ring2 {
+    padding: 12px;
+  }
+
+  .contact-card .halo-badge--lg .halo-badge__core {
+    padding: 16px;
+    width: 24px;
+    height: 24px;
   }
 
   .contact-card__title {
-    font-size: 22px;
+    font-size: 24px;
+    line-height: 1.25;
     width: 100%;
   }
 
+  .contact-card__links {
+    gap: 16px;
+  }
+
   .contact-row {
-    flex-wrap: wrap;
+    gap: 10px;
+    height: 36px;
+  }
+
+  .contact-row__icon {
+    width: 32px;
+    height: 32px;
   }
 
   .contact-row__label,
   .contact-row__link {
     font-size: 16px;
+    line-height: 1.25;
   }
 }
 
-@media (max-width: 520px) {
-  .blogger-columns {
-    flex-direction: column;
+/* Very small phones — adjust sizing */
+@media (max-width: 360px) {
+  .hero__title { font-size: 36px; }
+  .section-title,
+  .omnipresence__title,
+  .turnkey__title,
+  .pricing-section__title {
+    font-size: 28px;
   }
-  .blogger-column {
-    flex: 1 1 100%;
-    min-width: 100%;
-  }
+  .country-tag { font-size: 16px; }
 }
